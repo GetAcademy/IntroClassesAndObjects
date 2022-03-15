@@ -14,11 +14,11 @@ namespace IntroClassesAndObjects
                 new Clicker('d'),
                 new Clicker('o'),
             };
-            var totalClicks = 0;
             while (true)
             {
                 var keyInfo = Console.ReadKey();
                 Console.Clear();
+                var totalClicks = 0;
                 foreach (var clicker in clickers)
                 {
                     clicker.Click(keyInfo.KeyChar);
