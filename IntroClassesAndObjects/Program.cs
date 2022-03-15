@@ -1,12 +1,55 @@
-﻿namespace IntroClassesAndObjects
+﻿using System;
+
+namespace IntroClassesAndObjects
 {
     internal class Program
     {
+        private static void ClickerDemo()
+        {
+            var clickers = new Clicker[]
+            {
+                new Clicker('q'),
+                new Clicker('p'),
+                new Clicker('b'),
+                new Clicker('d'),
+                new Clicker('o'),
+            };
+            var totalClicks = 0;
+            while (true)
+            {
+                var keyInfo = Console.ReadKey();
+                Console.Clear();
+                foreach (var clicker in clickers)
+                {
+                    clicker.Click(keyInfo.KeyChar);
+                    clicker.Show();
+                    totalClicks += clicker.Count;
+                }
+                Console.WriteLine($"Totalt antall klikk = {totalClicks}");
+            }
+
+
+            /*
+            var count = 0;
+            while (true)
+            {
+                var keyInfo = Console.ReadKey();
+                if (keyInfo.Key == ConsoleKey.Q)
+                {
+                    count++;
+                }
+
+                Console.Clear();
+                Console.WriteLine($"Clicker Q = {count}");
+            }             
+             */
+        }
+
         static void Main(string[] args)
         {
+            ClickerDemo();
+            return;
             /*
-             * Pause 11:05
-             *
              * - Klasser som en måte å utnytte
              *   sterk typing enda mer
              * - Constructor
@@ -19,14 +62,7 @@
             var person = new Person(
                 "Terje", 1975);
             person.Show();
-            
 
-            /*
-             demo 2
-            var person = new Person();
-            person.Name = "Terje";
-            person.BirthYear = 1975;
-            */
 
             // demo 3
             var people = new Person[]
@@ -44,26 +80,6 @@
                     new Person ("Per", 1980),
                     new Person ("Pål", 1982),
                 });
-
-            // demo 5
-            /*
-            var model2 = new Model2
-            {
-                Inputs = new Inputs
-                {
-                    PageA = new PageA
-                    {
-                        Number = 5,
-                        Text = "Hei"
-                    }
-
-                },
-                Places= new Place []{
-                    new Place() { Name= "Stavern", Country= "Norway"},
-                    new Place() { Name= "Stockholm", Country= "Sweden"},
-                }
-            };
-            */
         }
     }
 }
